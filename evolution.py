@@ -2,7 +2,7 @@ import random
 from evol import Population, Evolution
 import numpy as np
 from collections import OrderedDict
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 
 #np.set_printoptions(suppress=True)
 
