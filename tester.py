@@ -3,10 +3,10 @@ import inspect
 def dummy_model(attributes):
 	global pop_memory
 	global fitness_memory
-	
+
 	# Target values for this dummy:
 	# {"alma: 13, korte: 0.2, barack: -8.0, vadkorte: "ketto"}
-	stack = inspect.stack()
+	
 	#print(globals(),"\n\n")
 	error = abs(int(attributes["alma"])-13) 
 	error += (abs(float(attributes["korte"])-0.2))*100.0
