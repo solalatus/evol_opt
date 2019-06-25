@@ -145,7 +145,7 @@ def mut(chromosome, sigma=1, start_values={}):
   return new
 
 
-def evolve(start_values, model_function, popsize, iterations, maximize=False, survior_fraction=0.5, mutation_sigma=0.1):
+def evolve(start_values, model_function, popsize, iterations, pop_memory=[], fitness_memory=[], maximize=False, survior_fraction=0.5, mutation_sigma=0.1):
   
   pop = Population(chromosomes=from_to_and_choice_start(start_values,popsize),
                  eval_function=model_function, maximize=maximize)
@@ -160,6 +160,9 @@ def evolve(start_values, model_function, popsize, iterations, maximize=False, su
 
   best_params = pop.documented_best.chromosome
   best_score = pop.documented_best.fitness
+
+  #print(pop_memory)
+  print("Number of evaluated genomes in pop_memory:",len(pop_memory),"\n\n")
 
   return best_params, best_score
 

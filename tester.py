@@ -1,14 +1,21 @@
+import inspect
 
 def dummy_model(attributes):
-
+	global pop_memory
+	global fitness_memory
+	
 	# Target values for this dummy:
 	# {"alma: 13, korte: 0.2, barack: -8.0, vadkorte: "ketto"}
-
+	stack = inspect.stack()
+	#print(globals(),"\n\n")
 	error = abs(int(attributes["alma"])-13) 
 	error += (abs(float(attributes["korte"])-0.2))*100.0
 	error += abs(float(attributes["barack"])+8.0)
 	if str(attributes["vadkorte"])!="ketto":
 		error+=10
+	
+	pop_memory.append(attributes)
+	fitness_memory.append(error)
 
 	return abs(error)
 
@@ -45,8 +52,10 @@ parameter_ranges = {"alma":[1,100],
 					"korte":[0.0,1.0],
 					"barack":[-10.0,0.0],
 					"vadkorte":["egy","ketto","harom"]}
+pop_memory=[]
+fitness_memory=[]
 
-solution, score = evolve(parameter_ranges, dummy_model, popsize, generations)
+solution, score = evolve(parameter_ranges, dummy_model, popsize, generations, pop_memory, fitness_memory)
 
 #-----</evolution>------------
 
